@@ -44,6 +44,14 @@
       </div>
     </div>
     <div class="row">
+      <div class="col-md-12">
+       <div data-hook="environment" class="form-group">
+        <%= f.label :banner_url, Spree.t(:path) %>
+        <%= f.text_field :path, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-md-6">
         <div data-hook="environment" class="form-group">
           <%= f.label :upload_image, class: 'radio-inline' do %>
