@@ -1,0 +1,13 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  home_carousel_banner: "Home Carousel Banners"
+  name: "Carousel Name"
+  image: "Carousel Image"
+  live: "Live"
+  edit_carousel_banner: "Edit Carousel Banner"
+  new_carousel_banner: "New Carousel Banner"
+  back_to_carousel_banner_list: "Back To Carousel Banner List"
+  description: "Banner Description"
+  display_name: "Banner Display Name"

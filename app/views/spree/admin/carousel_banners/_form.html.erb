@@ -1,0 +1,69 @@
+<%= form_for [:admin, resource] do |f| %>
+
+  <div data-hook="admin_social_methods_form_fields">
+    <div class="row">
+      <div class="col-md-6">
+        <div data-hook="environment" class="form-group">
+          <%= f.label :banner_name, Spree.t(:name) %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div data-hook="environment" class="form-group">
+          <%= f.label :position, Spree.t(:position) %>
+          <%= f.text_field :position, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div data-hook="environment" class="form-group">
+          <%= f.label :banner_display_name, Spree.t(:display_name) %>
+          <%= f.text_field :display_name, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div data-hook="environment" class="form-group">
+          <%= f.label :description, Spree.t(:description) %>
+          <%= f.text_field :description, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div data-hook="environment" class="form-group">
+          <%= f.label :live, class: 'radio-inline' do %>
+            <%= f.radio_button :live, :true %>
+            <%= Spree.t(:active) %>
+          <% end %>
+          <%= f.label :live, class: 'radio-inline' do %>
+            <%= f.radio_button :live, :false %>
+            <%= Spree.t(:inactive) %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div data-hook="environment" class="form-group">
+          <%= f.label :upload_image, class: 'radio-inline' do %>
+            <%= f.file_field :avatar, as: :file %>
+            <%= "Upload Image" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+     <div class="row">
+      <div class="col-md-12">
+       <div data-hook="environment" class="form-group">
+        <% if !resource.new_record?%>
+        <br/>Image Path : <%= Rails.root+"/public"+f.object.avatar.url%><br/>
+        Thumbnail : <%= image_tag(Rails.root+"/public"+f.object.avatar.url, height: '100', width: '100') %>
+        <%end%>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= render "spree/admin/shared/#{resource.new_record? ? 'new' : 'edit'}_resource_links" %>
+<% end %>

@@ -1,0 +1,38 @@
+<% content_for :page_title do %>
+  <%= t(:home_carousel_banner) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= button_link_to "new home carousel banner", new_object_url, icon: 'add', class: 'btn-success', id: 'admin_new_slide_link' %>
+<% end %>
+
+<% if @carousel_banners.any? %>
+  <table class="table" id="listing_trackers">
+    <thead data-hook="admin_social_methods_index_headers">
+      <th><%= t(:name) %></th>
+      <th><%= t(:image) %></th>
+      <th><%= Spree.t(:active) %></th>
+      <th><%= Spree.t(:position) %></th>
+      <th data-hook="admin_social_methods_index_header_actions" class="actions"></th>
+    </thead>
+    <tbody>
+      <% @carousel_banners.each do |method| %>
+        <tr id="<%= dom_id method %>" data-hook="admin_trackers_index_rows" class="<%= cycle('odd', 'even') %>">
+          <td><%= method.name %></td>
+          <td><%= image_tag(Rails.root+"/public"+method.avatar.url, height: '100', width: '100') %></td>
+          <td><%= method.live ? Spree.t(:yes) : Spree.t(:no)%></td>
+          <td><%= method.position%></td>
+          <td class="actions">
+            <%= link_to_edit method, no_text: true %>
+            <%= link_to_delete method, no_text: true %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="alert alert-warning no-objects-found">
+    <%= Spree.t(:no_carousel_banners_found) %>,
+    <%= Spree.t(:add_one) %>!
+  </div>
+<% end %>
